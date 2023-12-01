@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose"; // for CRUD operation 
 import cors from 'cors'          // to elliminate cross origin issue
 //import { configDotenv } from "dotenv";
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
 import userRoutes from './routes/users.js'
 import questionRoutes from './routes/Questions.js'
@@ -24,10 +24,12 @@ app.use('/questions', questionRoutes);
 app.use('/answer', answerRoutes);
 
 const PORT= process.env.PORT || 5000; // if port not available then it take 5000
+//const uri= "mongodb+srv://archananagdeve2186:Archu2186@stack-overflow-clone.siiljfm.mongodb.net/?retryWrites=true&w=majority"
 
 const DATABASE_URL = process.env.CONNECTION_URL;
 
-mongoose.connect(DATABASE_URL , {useNewUrlParser: true, useUnifiedTopology : true})
+mongoose.connect(DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology : true})
+
     .then(() => app.listen(PORT , () => {
         console.log(`server running on port ${PORT}`)
     }))
